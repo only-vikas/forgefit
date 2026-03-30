@@ -2,33 +2,92 @@
 @tailwind components;
 @tailwind utilities;
 
+/* ─────────────────────────────────────────────────────────────
+ * ForgeFit Cinematic OS  –  Global Styles
+ * ───────────────────────────────────────────────────────────── */
+
 :root {
-  --background: 0 0% 0%;
-  --foreground: 0 0% 100%;
+  --forge-bg: #080808;
+  --forge-accent: #C8FF00;
+  --forge-accent-dim: rgba(200, 255, 0, 0.25);
+  --forge-glass-bg: rgba(255, 255, 255, 0.03);
+  --forge-glass-border: rgba(255, 255, 255, 0.06);
+}
+
+/* ── Base resets ── */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: black;
-  color: white;
-  font-family: 'Inter', sans-serif;
+  background: var(--forge-bg);
+  color: #ffffff;
+  font-family: var(--font-inter), 'Inter', system-ui, sans-serif;
   overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
+/* ── Selection ── */
+::selection {
+  background: var(--forge-accent);
+  color: var(--forge-bg);
+}
+
+/* ── Glassmorphism utility ── */
 .glass {
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: var(--forge-glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--forge-glass-border);
 }
 
+/* ── Glow animation ── */
 .animate-glow {
   animation: glow 2s ease-in-out infinite alternate;
 }
 
 @keyframes glow {
   from {
-    box-shadow: 0 0 10px rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(200, 255, 0, 0.15);
   }
   to {
-    box-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+    box-shadow: 0 0 25px rgba(200, 255, 0, 0.4);
   }
+}
+
+/* ── Scrollbar (thin, dark) ── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--forge-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(200, 255, 0, 0.15);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(200, 255, 0, 0.3);
+}
+
+/* ── Canvas elements (Three.js) ── */
+canvas {
+  display: block;
+  outline: none;
+}
+
+/* ── Smooth page transitions ── */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.6s ease, transform 0.6s ease;
 }
