@@ -3,20 +3,22 @@
 @tailwind utilities;
 
 /* ─────────────────────────────────────────────────────────────
- * ForgeFit Cinematic OS  –  Global Styles
+ * ForgeFit Cinematic OS  –  Global Production Styles
  * ───────────────────────────────────────────────────────────── */
 
 :root {
   --forge-bg: #080808;
   --forge-accent: #C8FF00;
   --forge-accent-dim: rgba(200, 255, 0, 0.25);
-  --forge-glass-bg: rgba(255, 255, 255, 0.03);
-  --forge-glass-border: rgba(255, 255, 255, 0.06);
+  --forge-glass-bg: rgba(255, 255, 255, 0.02);
+  --forge-glass-border: rgba(255, 255, 255, 0.05);
+  --forge-glass-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
 }
 
-/* ── Base resets ── */
+/* ── Base resets & Theme ── */
 html {
   scroll-behavior: smooth;
+  height: 100%;
 }
 
 body {
@@ -26,6 +28,29 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100vh;
+}
+
+/* ── Focus & Accessibility ── */
+*:focus-visible {
+  outline: 2px solid var(--forge-accent);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* ── Accessibility: Reduced Motion ── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-delay: -1ms !important;
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    background-attachment: initial !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0s !important;
+    transition-delay: 0s !important;
+  }
 }
 
 /* ── Selection ── */
@@ -33,61 +58,88 @@ body {
   background: var(--forge-accent);
   color: var(--forge-bg);
 }
+::-moz-selection {
+  background: var(--forge-accent);
+  color: var(--forge-bg);
+}
 
-/* ── Glassmorphism utility ── */
+/* ── Typographic Scaling & Enhancements ── */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-space-grotesk), monospace;
+}
+.font-mono {
+  font-family: var(--font-jetbrains), monospace;
+}
+
+/* ── Perfect Glassmorphism ── */
 .glass {
   background: var(--forge-glass-bg);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   border: 1px solid var(--forge-glass-border);
+  box-shadow: var(--forge-glass-shadow);
+}
+.glass-heavy {
+  background: rgba(8, 8, 8, 0.6);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ── Glow animation ── */
-.animate-glow {
-  animation: glow 2s ease-in-out infinite alternate;
+/* ── Global Noise Overlay ── */
+.noise-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.03;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
 
-@keyframes glow {
-  from {
-    box-shadow: 0 0 10px rgba(200, 255, 0, 0.15);
-  }
-  to {
-    box-shadow: 0 0 25px rgba(200, 255, 0, 0.4);
-  }
-}
-
-/* ── Scrollbar (thin, dark) ── */
+/* ── Custom Scrollbar ── */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 8px;
+  height: 8px;
 }
-
 ::-webkit-scrollbar-track {
   background: var(--forge-bg);
+  border-left: 1px solid var(--forge-glass-border);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: rgba(200, 255, 0, 0.15);
-  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(200, 255, 0, 0.3);
+  background: var(--forge-accent-dim);
 }
 
-/* ── Canvas elements (Three.js) ── */
-canvas {
-  display: block;
-  outline: none;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-/* ── Smooth page transitions ── */
-.page-transition-enter {
-  opacity: 0;
-  transform: translateY(20px);
+/* ── Form Inputs ── */
+input:-webkit-autofill,
+input:-webkit-autofill:hover, 
+input:-webkit-autofill:focus, 
+input:-webkit-autofill:active{
+    -webkit-box-shadow: 0 0 0 30px #080808 inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
-.page-transition-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: opacity 0.6s ease, transform 0.6s ease;
+/* ── Cinematic Animations ── */
+.animate-glow {
+  animation: glow 2.5s ease-in-out infinite alternate;
 }
+@keyframes glow {
+  from { box-shadow: 0 0 10px rgba(200, 255, 0, 0.1); }
+  to { box-shadow: 0 0 30px rgba(200, 255, 0, 0.5); }
+}
+
+.page-transition-enter { opacity: 0; transform: translateY(15px); }
+.page-transition-enter-active { opacity: 1; transform: translateY(0); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
