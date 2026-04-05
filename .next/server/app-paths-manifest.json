@@ -1,9 +1,5 @@
 {
-  "/_not-found/page": "app/_not-found/page.js",
-  "/login/page": "app/login/page.js",
-  "/logger/page": "app/logger/page.js",
-  "/planner/page": "app/planner/page.js",
-  "/achievements/page": "app/achievements/page.js",
-  "/library/page": "app/library/page.js",
-  "/ai-coach/page": "app/ai-coach/page.js"
+  "/page": "app/page.js",
+  "/progress/page": "app/progress/page.js",
+  "/planner/page": "app/planner/page.js"
 }
