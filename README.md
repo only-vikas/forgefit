@@ -8,7 +8,8 @@ https://forgefit-phi.vercel.app/  visit here
 
 ForgeFit elevates the fitness tracking experience. Built for elite athletes who view their training as protocol execution, this UI strips away the mundane aesthetics of standard fitness apps in favor of a dark, sci-fi inspired, "cyber-luxury" interface powered by cutting edge 3D integration and cinematic micro-animations.
 
-<img width="1893" height="885" alt="image" src="https://github.com/user-attachments/assets/31d9af85-1a84-4f6c-a3db-47a3de22092a" />
+
+<img width="1920" height="987" alt="Screenshot (218)" src="https://github.com/user-attachments/assets/0d5f69df-e30d-4147-afd2-0a02bff7d3a6" />
 
 
 ## 🔥 Features
@@ -19,7 +20,7 @@ ForgeFit elevates the fitness tracking experience. Built for elite athletes who 
 - **Neural Engine AI:** An immersive chat UI interface designed to synthesize biometric feeds into actionable protocol adjustments.
 - **Achievements & PR Tracking:** Dark-gamification layer to reward consistency and load volume.
 
----
+<img width="1893" height="885" alt="image" src="https://github.com/user-attachments/assets/31d9af85-1a84-4f6c-a3db-47a3de22092a" />
 
 ## 🛠️ Technology Stack
 - **Framework:** Next.js 15 (App Router, React 19)
