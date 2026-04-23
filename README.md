@@ -8,7 +8,8 @@ https://forgefit-phi.vercel.app/  visit here
 
 ForgeFit elevates the fitness tracking experience. Built for elite athletes who view their training as protocol execution, this UI strips away the mundane aesthetics of standard fitness apps in favor of a dark, sci-fi inspired, "cyber-luxury" interface powered by cutting edge 3D integration and cinematic micro-animations.
 
----
+<img width="1893" height="885" alt="image" src="https://github.com/user-attachments/assets/31d9af85-1a84-4f6c-a3db-47a3de22092a" />
+
 
 ## 🔥 Features
 - **Cinematic Visual Language:** Deep black `#080808` canvases intertwined with vibrant `#C8FF00` (Neon Lime) accents, frosted glass panels, and noise overlays.
